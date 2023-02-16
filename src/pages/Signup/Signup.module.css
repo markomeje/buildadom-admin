@@ -1,0 +1,35 @@
+.wrapper {
+   flex-direction: row;
+}
+
+.left {
+   width: 60%;
+   padding: 240px 0 340px;
+   background-image: url('../../assets/man-design.png');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.right {
+   width: 100%;
+   max-width: 420px;
+   margin: auto;
+   padding: 140px 0;
+}
+
+@media only screen and (max-width: 767.98px) {
+   .wrapper {
+      flex-direction: column;
+   }
+
+   .left {
+      width: 100% !important;
+      padding: 140px 0 220px;
+   }
+
+   .right {
+      width: 100% !important;
+      padding: 40px 0;
+   }
+}
