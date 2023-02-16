@@ -2,7 +2,7 @@ import { Suspense, useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import GlobalLoader from './components/Loaders/GlobalLoader'
-import { routes } from './routes';
+import { routes } from './data/routes';
 import './App.css';
 
 export default function App() {

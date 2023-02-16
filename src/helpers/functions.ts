@@ -1,0 +1,1 @@
+export const isEmpty = (data: any) => typeof data === 'object' ? Object.keys(data || {}).length === 0 : !Boolean(data);
