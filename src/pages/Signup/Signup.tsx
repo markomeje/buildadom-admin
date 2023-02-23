@@ -1,7 +1,7 @@
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import styles from './Signup.module.css';
 import SignupArrow from '../../assets/arrow-signup.png';
-import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/Footer';
 import SignupModal from '../../components/Modals/SignupModal';
 import { useState } from 'react';
 import SingupMan from '../../assets/man-design.png'

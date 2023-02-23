@@ -10,11 +10,11 @@ export default function Features() {
             <Row className='d-flex align-items-center'>
                <Col sm='12' md='7' lg='6' className='mb-4'>
                   <div className="mb-5">
-                     <Image src={girl} className='img-fluid w-100' />
+                     <Image src={girl} className='img-fluid w-100 object-cover' />
                   </div>
                </Col>
                <Col sm='12' md='5' lg='6' className='mb-4 text-md-start text-center'>
-                  <p className='mb-3'>Join manufacturers all over the world and sell your product to a wider range of custormers and increase your earning rate through our mega platform  and also advertise your product to go top of the list anytime.</p>
+                  <p className='mb-3'>Join manufacturers, distributors and dealers all over the world  who are taking advantage of  digital transformation opportunities to change the way they do business - reach customers, sell, take, process and fulfill orders.</p>
                   <div className=''>
                      <div className='mb-2 text-dark'>Shop/Stores</div>
                      <h4 className='text-dark'>+3000</h4>

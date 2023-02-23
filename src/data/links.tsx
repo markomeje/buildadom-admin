@@ -2,6 +2,12 @@ import { RxCaretDown } from 'react-icons/rx';
 
 export const links = [
    {
+      name: 'Home',
+      icon: '',
+      path: '/',
+      isDropdown: false,
+   },
+   {
       name: 'Shop',
       icon: '',
       path: '/shop',

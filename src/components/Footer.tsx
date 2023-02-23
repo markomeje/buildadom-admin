@@ -1,6 +1,6 @@
-import Vector24 from '../../assets/Vector24.png';
 import { Link} from 'react-router-dom';
-import { Button, Col, Container, Row, Image, Form } from 'react-bootstrap'
+import { Button, Col, Container, Row, Image, Form } from 'react-bootstrap';
+import Logo from '../assets/logo.png';
 
 export default function Footer() {
    return (
@@ -9,9 +9,8 @@ export default function Footer() {
             <div style={{ padding: '120px 0' }}>
                <Row>
                   <Col sm="12" md="5" className='mb-4'>
-                     <div className='d-flex align-items-center mb-4'>
-                        <Image src={Vector24} className='me-3' />
-                        <h3 className='text-white'>House Depot</h3>
+                     <div className='mb-4' style={{ width: '185px', height: 'auto' }}>
+                        <Image src={Logo} className='w-100 h-100' />
                      </div>
                      <div>
                         <h5 className='text-white'>Sign Up To Our Newsletter.</h5>

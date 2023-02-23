@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import GlobalLoader from './components/Loaders/GlobalLoader'
 import { routes } from './data/routes';
-import './App.css';
+import './App.scss';
 
 export default function App() {
 

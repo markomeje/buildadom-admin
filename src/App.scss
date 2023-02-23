@@ -73,3 +73,7 @@ li:before {
 .bg-gray {
    background-color: var(--gray-color) !important;
 }
+
+.object-cover {
+   object-fit: cover;
+}
