@@ -51,7 +51,7 @@ export default function Home() {
                   <h4 className='text-dark'>New Products</h4>
                   <Link to='/products'>See All</Link>
                </div>
-               <div className='d-flex align-items-center' style={{ overflow: 'hidden !important', overflowX: 'scroll' }}>
+               <div className='d-flex align-items-center scroll-horizontally'>
                   {products && products.map(({title, price, rating, image}, index) => {
                      return (<div key={index}>
                         <Product key={index} title={title} price={price} ratingNumber={rating} image={image} />

@@ -11,9 +11,13 @@ type ProductProps = {
 };
 
 export default function Product({title, ratingNumber, image, price}: ProductProps) {
-   const [rating, setRating] = useState<number>(ratingNumber);
-   console.log(rating);
-   const ratingSize = 15;
+   const [rating, setRating] = useState(ratingNumber);
+   const ratingSize = 16;
+
+   const handleRating = (rate: number) => {
+      setRating(rate);
+      console.log(rate);
+   }
 
    return (
       <Card className='border-0 me-3' style={{ width: '190px' }}>
@@ -22,8 +26,8 @@ export default function Product({title, ratingNumber, image, price}: ProductProp
          </div>
          <Card.Body className='border-0 px-0'>
             <div className='d-flex align-items-center mb-2'>
-               <Rating initialValue={rating} size={ratingSize} className='me-1' />
-               <small className='text-muted mt-1'>Reviews ({ratingNumber})</small>
+               <Rating initialValue={rating} onClick={handleRating} size={ratingSize} className='me-1' />
+               <small className='text-muted mt-1'>Reviews ({rating})</small>
             </div>
             <Card.Text className='text-dark mb-2'>
                <small>{title}</small>
