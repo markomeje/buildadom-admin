@@ -16,7 +16,7 @@ export default function Product({title, ratingNumber, image, price}: ProductProp
    const ratingSize = 15;
 
    return (
-      <Card className='border-0 me-3' style={{ width: '200px' }}>
+      <Card className='border-0 me-3' style={{ width: '190px' }}>
          <div style={{ height: '190px' }}>
             <Card.Img variant="top" src={image} className='w-100 h-100 border-bottom img-fluid object-cover' />
          </div>
