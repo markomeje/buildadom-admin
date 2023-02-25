@@ -166,7 +166,7 @@ export default function Home() {
                <Row>
                   {companies && companies.map((company, index) => {
                      return (
-                        <Col xs='6' md='4' lg='3' xl='2' className='mb-3' key={index}>
+                        <Col xs='6' md='4' lg='2' xl='2' className='mb-4' key={index}>
                            <div className='w-100 border bg-light p-3' style={{ height: '90px' }}>
                               <Image src={company} className='w-100 h-100 object-cover' />
                            </div>
