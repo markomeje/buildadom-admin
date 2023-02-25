@@ -195,7 +195,7 @@ export default function Home() {
             </Container>
          </section>
          <section className='mb-5 pb-5'>
-            <Container style={{ maxWidth: '686px' }}>
+            <Container style={{ maxWidth: '786px' }}>
                <div className='rounded p-4 bg-light'>
                   <div className='d-flex mb-4'>
                      <div className='me-3' style={{ width: '60px', height: '60px' }}>
@@ -224,7 +224,7 @@ export default function Home() {
             </Container>
          </section>
          <section className='bg-white pb-5 mb-5'>
-            <Container style={{ maxWidth: '686px' }}>
+            <Container style={{ maxWidth: '786px' }}>
                <Row className='d-flex justify-content-center'>
                   {features && features.map(({title, icon, text}, index) => {
                      return (
