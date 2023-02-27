@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card } from "react-bootstrap";
 import { Rating } from 'react-simple-star-rating';
 import { AiFillCheckCircle, AiOutlineExclamationCircle } from 'react-icons/ai'
+import { Link } from "react-router-dom";
 
 
 type ProductProps = {
@@ -19,23 +20,22 @@ export default function Product({title, ratingNumber, image, price, inStock = fa
 
    const handleRating = (rate: number) => {
       setRating(rate);
-      console.log(rate);
    }
 
    return (
       <Card className='border-0' style={{ width: width }}>
          <div className='d-flex align-items-center mb-1'>
-               {inStock ? (<div className='text-success'>
-                  <AiFillCheckCircle size='0.9em' className='me-1' />
-                  <small className='text-success'>In stock</small>
-               </div>) : (<div className='text-danger'>
-                  <AiOutlineExclamationCircle size='0.9em' className='me-1' />
-                  <small className=''>Check availability</small>
-               </div>)}
-            </div>
-         <div style={{ height: '190px' }}>
-            <Card.Img variant="top" src={image} className='w-100 h-100 border-bottom img-fluid object-cover' />
+            {inStock ? (<div className='text-success'>
+               <AiFillCheckCircle size='0.9em' className='me-1' />
+               <small className='text-success'>In stock</small>
+            </div>) : (<div className='text-danger'>
+               <AiOutlineExclamationCircle size='0.9em' className='me-1' />
+               <small className=''>Check availability</small>
+            </div>)}
          </div>
+         <Link to={`/product?rating=${rating}`} target='_blank' className='text-decoration-none' style={{ height: '190px' }}>
+            <Card.Img variant="top" src={image} className='w-100 h-100 border-bottom img-fluid object-cover' />
+         </Link>
          <Card.Body className='border-0 px-0'>
             <div className='d-flex align-items-center mb-2'>
                <Rating initialValue={rating} onClick={handleRating} size={ratingSize} className='me-1' />
@@ -43,8 +43,10 @@ export default function Product({title, ratingNumber, image, price, inStock = fa
                   <small>Reviews ({rating})</small>
                </small>
             </div>
-            <Card.Text className='text-dark mb-2'>
-               <small>{title}</small>
+            <Card.Text className='mb-2'>
+               <Link to={`/product?rating=${rating}`} target='_blank' className='text-decoration-none'>
+                  <small className='text-dark'>{title}</small>
+               </Link>
             </Card.Text>
             <div className=''>
                <s className='mb-3 text-muted'>{price}</s>

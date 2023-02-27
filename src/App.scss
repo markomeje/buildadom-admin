@@ -3,7 +3,6 @@
   --dark-color: #090909;
   --orange-color: #E9A426;
   --gray-color: #C8CFDE;
-
 }
 
 h1,
@@ -23,24 +22,21 @@ ul {
 }
 
 .nav-tabs {
-   border-bottom: 0px solid transparent;
+   border-bottom: 0px solid transparent !important;
 }
 .nav-tabs .nav-link {
-   border: 0px solid transparent;
+   border: 0px solid transparent !important;
+   color: var(--dark-color) !important;
+   padding: 10px 0 !important;
+   margin: 0 18px 5px 0 !important;
 }
 
-// li:before {
-//    background-color: var(--orange-color);
-//    border-radius: 50%;
-//    content: "";
-//    display: inline-block;
-//    margin-right: 10px;
-//    margin-bottom: 2px;
-//    height: 10px;
-//    width: 10px;
-// }
+.nav-tabs .nav-link.active {
+   color: var(--main-color) !important;
+   border-bottom: 1px solid var(--main-color) !important;
+}
 
-.form-group input:focus{
+.form-group input:focus {
    outline: 0px !important; 
    box-shadow: none !important;
 }
@@ -87,11 +83,10 @@ ul {
 
 .scroll-horizontally {
    overflow-x: scroll;
-   -ms-overflow-style: none;  /* Internet Explorer and Edge */
-   scrollbar-width: none;  /* Firefox */
-
+   -ms-overflow-style: none;
+   scrollbar-width: none;
    
    &::-webkit-scrollbar {
-      display: none; /* Hide for Chrome, Safari and Opera */
+      display: none;
    }
 }

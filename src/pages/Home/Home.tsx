@@ -1,5 +1,4 @@
 import { Button, Col, Container, Row, Image, Carousel, Tabs, Tab } from 'react-bootstrap'
-import styles from './Home.module.css';
 import Product from '../../components/Product';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,7 @@ import Company from '../../assets/company.png';
 import { companies } from '../../data/companies';
 import { stores } from '../../data/stores';
 import Exclama from '../../assets/exclama.png';
-import { features } from '../../data/features';
+import Features from '../../components/Features';
 
 export default function Home() {
    const interval = 3000;
@@ -67,7 +66,7 @@ export default function Home() {
          </section>
          <section className='pb-5'>
             <Container>
-               <div className='d-flex align-items-center justify-content-center p-3 bg-gray'>
+               <div className='d-flex align-items-center justify-content-center p-3 bg-light'>
                   <Image src={Zip} className='me-2' />
                   <div className='text-dark'>Own it now, up to 6 months interest free learn more</div>
                </div>
@@ -95,7 +94,7 @@ export default function Home() {
          </section>
          <section className=''>
             <Container>
-               <Tabs defaultActiveKey="Building Tools" className="mb-3" style={{ textDecoration: 'none', listStyle: 'none' }}>
+               <Tabs defaultActiveKey="Building Tools" className="mb-3 text-muted" style={{ textDecoration: 'none', listStyle: 'none' }}>
                   {['Building Tools', 'Roofing Sheets', 'Solar Inverter', 'Floor Tiles'].map((category, index) => {
                      return (
                         <Tab eventKey={`${category}`} title={`${category}`} key={index}>
@@ -119,7 +118,7 @@ export default function Home() {
                      )
                   })}
                </Tabs>
-               <Tabs defaultActiveKey="Electric Switches" className="mb-3" style={{ textDecoration: 'none', listStyle: 'none' }}>
+               <Tabs defaultActiveKey="Electric Switches" className='mb-3' style={{ textDecoration: 'none', listStyle: 'none' }}>
                   {['Electric Switches', 'Pipes', 'Doors and Frames', 'Windows and Glasses'].map((category, index) => {
                      return (
                         <Tab eventKey={`${category}`} title={`${category}`} key={index}>
@@ -180,7 +179,7 @@ export default function Home() {
             <Container>
                <h4 className='mb-4'>See more of the top rated stores</h4>
                <Row className='d-flex justify-content-center'>
-                  {stores && stores.map(({title, date, image}, index) => {
+                  {stores && stores.slice(6).map(({title, date, image}, index) => {
                      return (
                         <Col xs='12' md='4' lg='3' xl='2' className='mb-3 text-center' key={index}>
                            <div className='w-100 mb-3' style={{ height: '140px' }}>
@@ -217,28 +216,13 @@ export default function Home() {
                               )
                            })}
                         </div>
-                           
                      </div>
                   </div>
                </div>
             </Container>
          </section>
          <section className='bg-white pb-5 mb-5'>
-            <Container style={{ maxWidth: '786px' }}>
-               <Row className='d-flex justify-content-center'>
-                  {features && features.map(({title, icon, text}, index) => {
-                     return (
-                        <Col xs='12' md='4' lg='4' className='mb-3 text-center' key={index}>
-                           <div className='w-100 mb-3'>
-                              <Image src={icon} className='' />
-                           </div>
-                           <div className='text-dark mb-2'>{title}</div>
-                           <small className='text-muted'>{text}</small>
-                        </Col>
-                     )
-                  })}
-               </Row>
-            </Container>
+            <Features />
          </section>
          <section className=''>
             <Footer />

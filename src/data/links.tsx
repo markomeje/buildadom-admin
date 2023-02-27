@@ -8,9 +8,15 @@ export const links = [
       isDropdown: false,
    },
    {
-      name: 'Shop',
+      name: 'Marketplace',
       icon: '',
-      path: '/shop',
+      path: '/marketplace',
+      isDropdown: false,
+   },
+   {
+      name: 'Stores',
+      icon: '',
+      path: '/stores',
       isDropdown: false,
       dropdownLinks: [],
    },

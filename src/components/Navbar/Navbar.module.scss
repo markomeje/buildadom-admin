@@ -1,9 +1,5 @@
-.button {
-   position: relative;
-}
-
-.link {
-   cursor: pointer;
+.hamburger {
+   display: none !important;
 }
 
 .center {
@@ -11,8 +7,12 @@
    display: flex;
 }
 
-@media only screen and (max-width: 767.98px) {
+@media only screen and (max-width: 768px) {
    .center {
       display: none !important;
+   }
+
+   .hamburger {
+      display: inline !important;
    }
 }
