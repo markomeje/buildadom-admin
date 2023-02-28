@@ -1,5 +1,5 @@
 import { Col, Container, Row, Image, Button } from 'react-bootstrap'
-import AsideCategories from '../../components/Categories';
+import Categories from '../../components/Categories';
 import { products } from '../../data/products';
 import Item from '../../components/Product';
 import ProductImage from '../../assets/products/4.png';
@@ -16,7 +16,7 @@ export default function Product() {
             <Container>
                <Row className="d-flex">
                   <Col xs='12' md='4' lg='3' className='mb-4'>
-                     <AsideCategories />
+                     <Categories />
                   </Col>
                   <Col xs='12' md='8' lg='9'>
                      <Row className='mb-4'>

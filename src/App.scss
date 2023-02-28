@@ -69,6 +69,10 @@ ul {
    background-color: var(--dark-color) !important;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
 .text-main {
    color: var(--main-color) !important;
 }

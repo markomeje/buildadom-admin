@@ -8,7 +8,7 @@ import Product from '../../components/Product';
 import { products } from "../../data/products";
 import Features from "../../components/Features";
 import Footer from '../../components/Footer';
-import AsideCategories from '../../components/Categories';
+import Categories from '../../components/Categories';
 
 export default function Marketplace() {
    return (
@@ -53,7 +53,7 @@ export default function Marketplace() {
                </div>
                <Row className="d-flex">
                   <Col xs='12' md='4' lg='3'>
-                     <AsideCategories />
+                     <Categories />
                   </Col>
                   <Col xs='12' md='8' lg='9'>
                      <Row>

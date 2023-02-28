@@ -1,7 +1,7 @@
 import { RxCaretDown } from 'react-icons/rx'
 import { categories } from '../data/categories'
 
-export default function AsideCategories() {
+export default function Categories() {
    return (
       <div className='bg-light p-4'>
          <h5 className='mb-3'>Filters</h5>
