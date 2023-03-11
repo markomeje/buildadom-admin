@@ -1,64 +1,89 @@
-import { ChangeEvent, useState } from "react";
+import { FormEvent, useState, ChangeEvent, useReducer } from "react";
 import axios from 'axios';
 
 type useFormProps = {
-   form: any,
-   additionalData: Object,
-   endpointUrl: string
+   endpointUrl: string,
+   additionalData?: object
+};
+
+const formReducer = (state: object, event: any) => {
+   return {
+      ...state,
+      [event.name]: event.value
+   }
 }
 
-export default function useForm({form, endpointUrl, additionalData}: useFormProps) {
-   const [status, setStatus] = useState("");
-
+export default function useForm(endpointUrl: string, additionalData: object) {
    const [submitting, setSubmitting] = useState(false);
+   const [form, setForm] = useReducer(formReducer, {});
    const [errors, setErrors] = useState<any>({});
-   const [success, setSuccess] = useState({});
+   const [successful, setSuccessful] = useState(false);
    const [message, setMessage] = useState('');
 
-   const handleSubmit = (event: ChangeEvent<HTMLInputElement>) => {
+   const [response, setResponse] = useState({});
+
+   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setForm({
+         name: name,
+         value: value,
+      });
+
+      errors[name] = '';
+      setErrors({...errors});
+   };
+
+   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
       if (form) {
          event.preventDefault();
          setSubmitting(true);
+         setSuccessful(false);
          setMessage('');
 
-         const finalFormEndpoint = endpointUrl || form.action;
-         const names = [...form.elements].filter((input) => (input.name));
-         
-         const data = names.reduce((obj, input) => Object.assign(obj, { [input.name]: input.value }), {});
-
          if (additionalData) {
-            Object.assign(data, additionalData);
+            Object.assign(form, additionalData);
          }
 
-         const options = {
+         console.log(form);
+
+         var config = {
             headers: {
-               Accept: "application/json",
-               "Content-Type": "application/json",
+               'Accept': 'application/json',
+               'Content-Type': 'application/json',
+               'Access-Control-Allow-Origin': '*',
             },
+            withCredentials: false
          };
 
-         axios.post(finalFormEndpoint, form, options).then((response) => {
+         axios.post(endpointUrl, form, config).then((response) => {
             const data = response?.data;
             if (data['errors']) {
                setErrors(data['errors']);
             }else {
-               setSuccess(data['success']);
+               setSuccessful(data['success']);
                setMessage(data['message']);
+               if (data['response']) {
+                  setResponse(data['response']);
+                  console.log(data['response']);
+               }
             }
 
             setSubmitting(false);
          }).catch(function (error) {
             setSubmitting(false);
-            setMessage('An error occurred. Try again later');
+            setSuccessful(false);
+            setMessage('An error occurred. Please refresh this page and try again later');
          });
       }
    };
 
    return { 
-      success, 
+      successful, 
       handleSubmit,
       message, 
       submitting, 
       errors,
+      handleChange,
+      response
    };
 }

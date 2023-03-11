@@ -15,6 +15,22 @@ h6 {
    font-weight: 600;
 }
 
+button[disabled]:active, button[disabled],
+input[type="button"][disabled]:active,
+input[type="button"][disabled],
+input[type="submit"][disabled]:active,
+input[type="submit"][disabled],
+button[disabled]:hover,
+input[type="button"][disabled]:hover,
+input[type="submit"][disabled]:hover {
+   pointer-events: none;
+   opacity: 0.7
+}
+
+.cursor-unallowed {
+   cursor: not-allowed;
+}
+
 ul {
    padding: 0;
    list-style-type: none;

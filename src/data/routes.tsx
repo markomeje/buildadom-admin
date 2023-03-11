@@ -7,7 +7,7 @@ const Marketplace = lazy(() => pMinDelay(import('../pages/Marketplace/Marketplac
 const Product = lazy(() => pMinDelay(import('../pages/Product/Product'), 500));
 const Stores = lazy(() => pMinDelay(import('../pages/Stores/Stores'), 500));
 const Cart = lazy(() => pMinDelay(import('../pages/Cart/Cart'), 500));
-
+const Verification = lazy(() => pMinDelay(import('../pages/Verification/Verification'), 500));
 
 export const routes = [
    {
@@ -29,6 +29,10 @@ export const routes = [
    {
       element: <Signup />,
       path: '/signup',
+   },
+   {
+      element: <Verification />,
+      path: '/verification',
    },
    {
       element: <Cart />,
