@@ -39,6 +39,8 @@ export default function useForm(endpointUrl: string, additionalData: object) {
          setSubmitting(true);
          setSuccessful(false);
          setMessage('');
+         setErrors({});
+         setResponse({});
 
          if (additionalData) {
             Object.assign(form, additionalData);
@@ -64,7 +66,6 @@ export default function useForm(endpointUrl: string, additionalData: object) {
                setMessage(data['message']);
                if (data['response']) {
                   setResponse(data['response']);
-                  console.log(data['response']);
                }
             }
 
