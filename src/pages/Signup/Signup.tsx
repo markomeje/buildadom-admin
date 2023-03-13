@@ -1,22 +1,25 @@
-import { useSearchParams } from 'react-router-dom';
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
 import SignupArrow from '../../assets/arrow-signup.png';
 import Footer from '../../components/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SingupMan from '../../assets/man-design.png'
 import SignupForm from '../../components/Forms/SignupForm';
 
 export default function Signup() {
-   const [searchParams] = useSearchParams();
-   const type = searchParams.get('type') || '';
-   
+   const [type, setType] = useState('');
    const types = ['business', 'individual'];
+   const changedToType = type === 'business' ? 'individual' : 'business';
 
    return (                                                          
       <div style={{ marginTop: '50px' }}>
          {types.includes(type) ? (<Container style={{ paddingTop: '120px', paddingBottom: '120px' }}>
             <Row className='d-flex justify-content-center'>
                <Col xs='12' md='7' lg='5'>
+                  <div className='m-auto text-center' style={{ maxWidth: '240px' }}>
+                     <div className='bg-light cursor-pointer border p-2 rounded-pill mb-3' onClick={() => setType(changedToType)}>
+                        <small className='text-dark'>Or register as {changedToType === 'individual' ? 'an' : 'a'} {changedToType}?</small>
+                     </div>
+                  </div>
                   <h1 className='text-center mb-4'>Create your {`${type}`} account</h1>
                   <div className='d-flex align-items-center justify-content-center mb-5'>
                      <div className='bg-main' style={{ width: '40px', height: '2px' }}></div>
@@ -51,7 +54,7 @@ export default function Signup() {
                      <p className='text-dark px-lg-5'>Choose method of registration to proceed with creatng your account with us.</p>
                      <div className='d-flex justify-content-center flex-column px-lg-5'>
                         {types && types.map((type, index) => {
-                           return (<Button key={index} href={`/signup?type=${type}`} className='bg-main rounded-pill px-4 py-2 text-white mb-4' >Register as {type === 'individual' ? 'an' : 'a'} {`${type}`}</Button>)
+                           return (<Button key={index} onClick={() => setType(type)} className='bg-main rounded-pill px-4 py-2 text-white mb-4' >Register as {type === 'individual' ? 'an' : 'a'} {`${type}`}</Button>)
                         })}
                      </div>
                   </div>
