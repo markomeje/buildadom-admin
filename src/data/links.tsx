@@ -48,4 +48,11 @@ export const links = [
       isDropdown: false,
       dropdownLinks: [],
    },
+   {
+      name: 'Signup',
+      icon: '',
+      path: '/signup',
+      isDropdown: false,
+      dropdownLinks: [],
+   },
 ];

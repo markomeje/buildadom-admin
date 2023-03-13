@@ -7,7 +7,6 @@ import { links } from '../../data/links';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BiSearch } from 'react-icons/bi';
 import ProfileImage from '../../assets/profile.png';
-//import { isEmpty } from '../../helpers/functions';
 
 export default function Navbar() {
    return (
