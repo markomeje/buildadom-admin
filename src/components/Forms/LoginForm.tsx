@@ -6,9 +6,8 @@ import useForm from '../../hooks/useForm';
 export default function LoginForm() {
 
    const additionalData = {};
-   const baseUrl = import.meta.env.VITE_API_URL || 'https://api.buildadom.net/api/v1';
-
-   const {successful, handleSubmit, message, submitting, errors, handleChange} = useForm(`${baseUrl}/login`, additionalData);
+   const url = import.meta.env.VITE_API_URL;
+   const {successful, handleSubmit, message, submitting, errors, handleChange} = useForm(`${url}/login`, additionalData);
 
    return (
       <>

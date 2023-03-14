@@ -8,7 +8,6 @@ const Product = lazy(() => pMinDelay(import('../pages/Product/Product'), 500));
 const Stores = lazy(() => pMinDelay(import('../pages/Stores/Stores'), 500));
 const Cart = lazy(() => pMinDelay(import('../pages/Cart/Cart'), 500));
 const Verification = lazy(() => pMinDelay(import('../pages/Verification/Verification'), 500));
-const Email = lazy(() => pMinDelay(import('../pages/Verification/Email'), 500));
 const Login = lazy(() => pMinDelay(import('../pages/Login/Login'), 500));
 
 
@@ -36,10 +35,6 @@ export const routes = [
    {
       element: <Verification />,
       path: '/verification/:type',
-   },
-   {
-      element: <Email />,
-      path: '/email/verify/:code',
    },
    {
       element: <Cart />,

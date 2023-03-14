@@ -11,7 +11,7 @@ export default function Verification() {
    const [finished, setfFinished] = useState(false);
    const { type } = useParams();
 
-   const url = import.meta.env.VITE_API_URL || 'https://api.buildadom.net/api/v1';
+   const url = import.meta.env.VITE_API_URL;
    const {successful, handleSubmit, message, submitting, errors, response} = useForm(`${url}/verification/verify`, {code: otp, type: type});
 
    useEffect(() => {

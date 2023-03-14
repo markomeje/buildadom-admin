@@ -14,9 +14,8 @@ export default function SignupForm({ type }: SignupFormProps) {
    const [phone, setPhone] = useState<any>();
 
    const additionalData = {type: type, phone: phone};
-   const baseUrl = import.meta.env.VITE_API_URL || 'https://api.buildadom.net/api/v1';
-
-   const {successful, handleSubmit, message, submitting, errors, handleChange} = useForm(`${baseUrl}/signup`, additionalData);
+   const url = import.meta.env.VITE_API_URL;
+   const {successful, handleSubmit, message, submitting, errors, handleChange} = useForm(`${url}/signup`, additionalData);
    const isBusiness = type === 'business' ? 'Business' : '';
    
    return (
