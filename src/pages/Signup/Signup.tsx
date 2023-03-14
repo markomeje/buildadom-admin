@@ -1,7 +1,7 @@
 import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
 import SignupArrow from '../../assets/arrow-signup.png';
 import Footer from '../../components/Footer';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SingupMan from '../../assets/man-design.png'
 import SignupForm from '../../components/Forms/SignupForm';
 
@@ -48,7 +48,7 @@ export default function Signup() {
                   </div>
                </Col>
                <Col sm='12' md='6' className='text-center'>
-                  <div className='px-3' style={{ padding: '40px 0 100px' }}>
+                  <div className='px-3 bg-white shadow-sm' style={{ padding: '40px 0 100px' }}>
                      <Image src={SignupArrow} className='mb-3' />
                      <h2 className='text-dark'>Welcome to buildadom</h2>
                      <p className='text-dark px-lg-5'>Choose method of registration to proceed with creatng your account with us.</p>

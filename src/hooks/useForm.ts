@@ -1,4 +1,4 @@
-import { FormEvent, useState, ChangeEvent, useReducer } from "react";
+import { FormEvent, useState, ChangeEvent, useReducer, useEffect } from "react";
 import axios from 'axios';
 
 type useFormProps = {
@@ -20,7 +20,7 @@ export default function useForm(endpointUrl: string, additionalData: object) {
    const [successful, setSuccessful] = useState(false);
    const [message, setMessage] = useState('');
 
-   const [response, setResponse] = useState({});
+   const [response, setResponse] = useState({done: false});
 
    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
@@ -40,13 +40,11 @@ export default function useForm(endpointUrl: string, additionalData: object) {
          setSuccessful(false);
          setMessage('');
          setErrors({});
-         setResponse({});
+         setResponse({done: false});
 
          if (additionalData) {
             Object.assign(form, additionalData);
          }
-
-         console.log(form);
 
          var config = {
             headers: {
@@ -73,7 +71,7 @@ export default function useForm(endpointUrl: string, additionalData: object) {
          }).catch(function (error) {
             setSubmitting(false);
             setSuccessful(false);
-            setMessage('An error occurred. Please refresh this page and try again later');
+            setMessage('Unknown server error. Please try again.');
          });
       }
    };

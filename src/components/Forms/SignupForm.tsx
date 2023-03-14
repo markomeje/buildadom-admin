@@ -21,7 +21,7 @@ export default function SignupForm({ type }: SignupFormProps) {
    
    return (
       <>
-         {successful ? <Navigate to='/verification?type=phone' /> : (<Form onSubmit={handleSubmit} method='post'>
+         {successful ? <Navigate to={`/verification/phone`} /> : (<Form onSubmit={handleSubmit} method='post'>
             <Row>
                <Col md='6'>
                   <Form.Group className="mb-3">
