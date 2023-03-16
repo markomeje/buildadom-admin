@@ -4,8 +4,13 @@ import { Link, Navigate } from 'react-router-dom';
 import spinner from '../../assets/spinner.svg';
 import { useAuth } from '../../hooks/useAuth';
 import useForm from '../../hooks/useForm';
+import Process from '../../pages/Reset/Process';
+
 
 export default function LoginForm() {
+   const [show, setShow] = useState(false);
+   const handleClose = () => setShow(false);
+
    const url = import.meta.env.VITE_API_URL;
    const {successful, handleSubmit, message, submitting, errors, handleChange, response} = useForm(`${url}/auth/login`, {});
 
@@ -35,7 +40,7 @@ export default function LoginForm() {
                   <Form.Group className="mb-3">
                      <Form.Label className='d-flex justify-content-between'>
                         <div className='text-dark'>Password</div>
-                        <Link to='/login'>Forgot password?</Link>
+                        <div className='cursor-pointer text-main' onClick={() => setShow(true)}>Forgot password?</div>
                      </Form.Label>
                      <Form.Control size='lg' type="password" className={errors?.password && 'is-invalid'} name="password" placeholder="Enter your password" onChange={handleChange} />
                      {errors && errors?.password ? (<small className='text-danger'>{errors.password}</small>) : ''}
@@ -49,6 +54,7 @@ export default function LoginForm() {
                </Button>
             </span>
          </Form>)}
+         <Process show={show} handleClose={handleClose} />
       </>
    )
 }

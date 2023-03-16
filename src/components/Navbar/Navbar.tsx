@@ -13,8 +13,7 @@ type NavbarType = {
 }
 
 export default function Navbar({ showCenterLinks = true }: NavbarType) {
-   const { user } = useAuth();
-
+   const { user, logout } = useAuth();
    return (
       <div className='w-100 bg-white fixed-top border-bottom py-4'>
          <Container>
@@ -31,7 +30,7 @@ export default function Navbar({ showCenterLinks = true }: NavbarType) {
                   <Link to='/explore' className='me-3 text-decoration-none text-dark'>Explore</Link>
                   <Link to='/services' className='me-3 text-decoration-none text-dark'>Services</Link>
                   <Link to='/track-order' className='me-3 text-decoration-none text-dark'>Track Order</Link>
-                  {!user.token && <Link to='/signup' className='me-3 text-decoration-none text-dark'>Signup</Link>}
+                  {user.token ? (<div className='cursor-pointer' onClick={logout}>Logout</div>) : (<Link to='/signup' className='me-3 text-decoration-none text-dark'>Signup</Link>)}
                </div>)}
                <div className={`${styles.right} d-flex align-items-center `}>
                   <div className='text-main cursor-pointer'>

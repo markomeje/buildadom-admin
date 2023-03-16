@@ -7,7 +7,6 @@ import SignupForm from '../../components/Forms/SignupForm';
 import Navbar from '../../components/Navbar/Navbar';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import Marchant from '../Marchant/Marchant';
 
 export default function Signup() {
    const [type, setType] = useState('');
