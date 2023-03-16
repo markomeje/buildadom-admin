@@ -5,10 +5,10 @@ import Navbar from '../../components/Navbar/Navbar'
 import { useAuth } from '../../hooks/useAuth'
 
 export default function Marchant() {
-   const { user  } = useAuth();
+   const { user } = useAuth();
    let location = useLocation();
 
-   if (!user?.token) {
+   if (!user.token) {
       return (<Navigate to="/login" state={{ from: location }} replace />)
    }
 

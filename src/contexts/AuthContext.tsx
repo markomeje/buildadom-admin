@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { useCookies } from "react-cookie";
 
 type childrenProps = {
    children: ReactNode,
@@ -13,47 +12,97 @@ export interface User {
    token?: string;
 };
 
+export interface Auth {
+   status: boolean;
+   role: string;
+};
+
 interface AuthContext {
-   user: User | null,
-   authenticated: boolean,
-   login: () => void,
-   logout: () => void,
+   user: User;
+   auth: Auth;
+   login: (user: User) => void;
+   logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContext>({
-   user: null,
-   authenticated: false,
-   login: () => null,
-   logout: () => null,
+   user: {
+      id: '',
+      name: '',
+      email: '',
+      token: ''
+   },
+   auth: {
+      status: false,
+      role: ''
+   },
+   login: () => {},
+   logout: () => {},
 });
 
 export function AuthProvider({ children }: childrenProps) {
-   const [ user, setUser ] = useState<User | null>(null);
-   const [authenticated, setAuthenticated] = useState(false);
-   const { setItem } = useLocalStorage();
-   const [cookies, setCookies, removeCookie] = useCookies();
+   const [ user, setUser ] = useState<User>({
+      id: '',
+      name: '',
+      email: '',
+      token: ''
+   });
+
+   const [auth, setAuth] = useState({
+      status: false,
+      role: ''
+   });
+
+   const { setItem, getItem } = useLocalStorage();
 
    const login = (user: User) => {
       setItem('user', JSON.stringify(user));
-      setUser(user);
-      setAuthenticated(true);
-      setCookies('token', user.token);
+      setUser((prev: User) => ({
+         ...prev,
+         id: user.id,
+         name: user.name,
+         email: user.email,
+         token: user.token,
+      }));
+
+      setAuth((prev) => ({
+         ...prev,
+         status: true
+      }));
    };
 
    const logout = () => {
       setItem('user', '');
-      setUser(null);
-      setAuthenticated(false);
-      ['token'].forEach(cookie => removeCookie(cookie));
+      setUser((prev: User) => ({
+         ...prev,
+         id: '',
+         name: '',
+         email: '',
+         token: ''
+      }));
+
+      setAuth((prev) => ({
+         ...prev,
+         status: false
+      }));
    };
 
+   useEffect(() => {
+      async function check() {
+         const prev = getItem('user');
+         if (prev) {
+            setUser(JSON.parse(prev));
+         }
+      }
+
+      check();
+   }, []);
+
    const memo = useMemo(() => ({
-      cookies,
       login,
       logout,
-      authenticated,
-      user
-   }), [cookies]);
+      auth,
+      user,
+   }), [user]);
 
    return (<AuthContext.Provider value={memo}>
       {children}

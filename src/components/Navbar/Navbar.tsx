@@ -13,7 +13,7 @@ type NavbarType = {
 }
 
 export default function Navbar({ showCenterLinks = true }: NavbarType) {
-   const { authenticated } = useAuth();
+   const { user } = useAuth();
 
    return (
       <div className='w-100 bg-white fixed-top border-bottom py-4'>
@@ -31,7 +31,7 @@ export default function Navbar({ showCenterLinks = true }: NavbarType) {
                   <Link to='/explore' className='me-3 text-decoration-none text-dark'>Explore</Link>
                   <Link to='/services' className='me-3 text-decoration-none text-dark'>Services</Link>
                   <Link to='/track-order' className='me-3 text-decoration-none text-dark'>Track Order</Link>
-                  {!authenticated && <Link to='/signup' className='me-3 text-decoration-none text-dark'>Signup</Link>}
+                  {!user.token && <Link to='/signup' className='me-3 text-decoration-none text-dark'>Signup</Link>}
                </div>)}
                <div className={`${styles.right} d-flex align-items-center `}>
                   <div className='text-main cursor-pointer'>
@@ -41,7 +41,7 @@ export default function Navbar({ showCenterLinks = true }: NavbarType) {
                      <div className='bg-main text-center text-white rounded-circle position-absolute' style={{ width: '14px', height: '14px', lineHeight: '14px', fontSize: '0.6em', top: '-2px', left: '8px' }}>2</div>
                      <FiShoppingCart />
                   </Link>
-                  {authenticated ? (<div className='ms-3 border rounded-circle' style={{ width: '30px', height: '30px' }}>
+                  {user.token ? (<div className='ms-3 border rounded-circle' style={{ width: '30px', height: '30px' }}>
                      <Image src={ProfileImage} className='w-100 h-100 rounded-circle' />
                   </div>) : (<Link to='/login' className={styles.auth}>
                      <Button className='rounded-pill px-3 pt-2 ms-3 bg-main'>Signin/Register</Button>

@@ -22,7 +22,7 @@ export default function LoginForm() {
    
    return (
       <>
-         {user?.token ? <Navigate to='/marchant' /> : (<Form onSubmit={handleSubmit}>
+         {user.token ? <Navigate to='/marchant' /> : (<Form onSubmit={handleSubmit}>
             <Row>
                <Col md='12'>
                   <Form.Group className="mb-3">
