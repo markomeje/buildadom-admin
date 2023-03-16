@@ -32,7 +32,7 @@ export default function Verification() {
          <Modal show={true} handleClose={() => false} showCloseButton={false}>
             <div className='m-auto text-center' style={{ maxWidth: '320px' }}>
                {successful && type === 'phone' && (<Navigate to='/verification/email' />)}
-               <div>
+               <>
                   <h4 className='mb-4'>Enter your verification code</h4>
                   <p className='text-dark mb-4'>Please kindly enter the code we sent to your {type}.</p>
                   <Form onSubmit={handleSubmit} method='post' autoComplete='off'>
@@ -47,7 +47,7 @@ export default function Verification() {
                         </Button>
                      </span>
                   </Form>
-               </div>
+               </>
             </div>
          </Modal>
       </>

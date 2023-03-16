@@ -1,8 +1,11 @@
 import { Link} from 'react-router-dom';
 import { Button, Col, Container, Row, Image, Form } from 'react-bootstrap';
 import Logo from '../assets/logo.png';
+import { useAuth } from '../hooks/useAuth';
 
 export default function Footer() {
+   const { user } = useAuth();
+   
    return (
       <section className='bg-dark'>
          <Container>
@@ -36,7 +39,7 @@ export default function Footer() {
                      <Link to='/' className='d-block text-white mb-2'>Search</Link>
                      <Link to='/' className='d-block text-white mb-2'>Contact Us</Link>
                      <Link to='/' className='d-block text-white mb-2'>Orders and Returns</Link>
-                     <Link to='/signup' className='d-block text-white'>Sign Up</Link>
+                     {!user.token && <Link to='/signup' className='d-block text-white'>Sign Up</Link>}
                   </Col>
                   <Col sm="12" md="4">
                      <h3 className='text-white mb-3'>Address</h3>
@@ -47,7 +50,6 @@ export default function Footer() {
                   </Col>
                </Row>
             </div>
-               
          </Container>
          <Container className='py-4'>
             <Row>

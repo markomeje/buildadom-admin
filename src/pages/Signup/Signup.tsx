@@ -13,12 +13,12 @@ export default function Signup() {
    const [type, setType] = useState('');
    const types = ['business', 'individual'];
    const changedToType = type === 'business' ? 'individual' : 'business';
-   const { authenticated } = useAuth();
+   const { user } = useAuth();
 
    return (
       <>
          <Navbar showCenterLinks={false} />                                                  
-         {authenticated ? <Navigate to='/' /> : (<div style={{ marginTop: '50px' }}>
+         {user.token ? <Navigate to='/' /> : (<div style={{ marginTop: '50px' }}>
             {types.includes(type) ? (<Container style={{ paddingTop: '120px', paddingBottom: '120px' }}>
                <Row className='d-flex justify-content-center'>
                   <Col xs='12' md='7' lg='5'>
