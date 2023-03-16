@@ -7,6 +7,10 @@
    display: flex;
 }
 
+.auth {
+   display: flex;
+}
+
 @media only screen and (max-width: 768px) {
    .center {
       display: none !important;
@@ -14,5 +18,9 @@
 
    .hamburger {
       display: inline !important;
+   }
+
+   .auth {
+      display: none !important;
    }
 }

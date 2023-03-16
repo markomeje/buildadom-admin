@@ -10,11 +10,13 @@ import { companies } from '../../data/companies';
 import { stores } from '../../data/stores';
 import Exclama from '../../assets/exclama.png';
 import Features from '../../components/Features';
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Home() {
    const interval = 3000;
    return (
       <>
+         <Navbar showCenterLinks={true} />
          <section className='w-100 pb-5 m-0'>
             <Container style={{ marginTop: '60px' }}>
                <Carousel interval={interval}>

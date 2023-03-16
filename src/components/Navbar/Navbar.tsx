@@ -1,14 +1,20 @@
-import { Container, Image } from 'react-bootstrap'
+import { Button, Container, Image } from 'react-bootstrap'
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import LogoDark from '../../assets/logo-dark.png';
-import { links } from '../../data/links';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BiSearch } from 'react-icons/bi';
 import ProfileImage from '../../assets/profile.png';
+import { useAuth } from '../../hooks/useAuth';
 
-export default function Navbar() {
+type NavbarType = {
+   showCenterLinks: boolean,
+}
+
+export default function Navbar({ showCenterLinks = true }: NavbarType) {
+   const { authenticated } = useAuth();
+
    return (
       <div className='w-100 bg-white fixed-top border-bottom py-4'>
          <Container>
@@ -18,11 +24,15 @@ export default function Navbar() {
                      <Image src={LogoDark} className='w-100 h-100 object-cover' />
                   </div>
                </Link>
-               <div className={`${styles.center}`}>
-                  {links.map((link, index) => {
-                     return (link.isDropdown ? (<div></div>) : (<Link to={link.path} key={index} className='me-3 text-decoration-none text-dark'>{link.name}</Link>))
-                  })}
-               </div>
+               {showCenterLinks && (<div className={`${styles.center}`}>
+                  <Link to='/' className='me-3 text-decoration-none text-dark'>Home</Link>
+                  <Link to='/marketplace' className='me-3 text-decoration-none text-dark'>Marketplace</Link>
+                  <Link to='/categories' className='me-3 text-decoration-none text-dark'>Categories</Link>
+                  <Link to='/explore' className='me-3 text-decoration-none text-dark'>Explore</Link>
+                  <Link to='/services' className='me-3 text-decoration-none text-dark'>Services</Link>
+                  <Link to='/track-order' className='me-3 text-decoration-none text-dark'>Track Order</Link>
+                  {!authenticated && <Link to='/signup' className='me-3 text-decoration-none text-dark'>Signup</Link>}
+               </div>)}
                <div className={`${styles.right} d-flex align-items-center `}>
                   <div className='text-main cursor-pointer'>
                      <BiSearch />
@@ -31,9 +41,11 @@ export default function Navbar() {
                      <div className='bg-main text-center text-white rounded-circle position-absolute' style={{ width: '14px', height: '14px', lineHeight: '14px', fontSize: '0.6em', top: '-2px', left: '8px' }}>2</div>
                      <FiShoppingCart />
                   </Link>
-                  <div className='ms-3 border rounded-circle' style={{ width: '30px', height: '30px' }}>
+                  {authenticated ? (<div className='ms-3 border rounded-circle' style={{ width: '30px', height: '30px' }}>
                      <Image src={ProfileImage} className='w-100 h-100 rounded-circle' />
-                  </div>
+                  </div>) : (<Link to='/login' className={styles.auth}>
+                     <Button className='rounded-pill px-3 pt-2 ms-3 bg-main'>Signin/Register</Button>
+                  </Link>)}
                   <div className={`text-main cursor-pointer ms-3 ${styles.hamburger}`}>
                      <RxHamburgerMenu size='1.4em' />
                   </div>

@@ -6,10 +6,12 @@ import Footer from "../../components/Footer";
 import Store from "../../components/Store";
 import { categories } from "../../data/categories";
 import { stores } from "../../data/stores";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function Stores() {
    return (
       <>
+         <Navbar showCenterLinks={true} /> 
          <section style={{ padding: '140px 0 30px 0' }}>
             <Container>
                <div className='d-flex align-items-center mb-4'>

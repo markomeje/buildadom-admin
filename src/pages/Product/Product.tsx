@@ -8,10 +8,12 @@ import InStock from '../../assets/in-stock.png';
 import Love from '../../assets/love.png';
 import Footer from '../../components/Footer';
 import Features from '../../components/Features';
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Product() {
    return (
-      <div>
+      <>
+         <Navbar showCenterLinks={true} /> 
          <section style={{ padding: '120px 0' }}>
             <Container>
                <Row className="d-flex">
@@ -78,6 +80,6 @@ export default function Product() {
          <section>
             <Footer />
          </section>
-      </div>
+      </>
    )
 }

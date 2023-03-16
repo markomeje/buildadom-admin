@@ -9,10 +9,12 @@ import { products } from "../../data/products";
 import Features from "../../components/Features";
 import Footer from '../../components/Footer';
 import Categories from '../../components/Categories';
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function Marketplace() {
    return (
       <>
+         <Navbar showCenterLinks={true} /> 
          <section style={{ padding: '140px 0 60px 0' }}>
             <Container>
                <div className='d-flex align-items-center mb-4'>

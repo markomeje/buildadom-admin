@@ -1,29 +1,43 @@
+import { useEffect, useState } from 'react';
 import { Form, Row, Col, Alert, Button, Image } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import spinner from '../../assets/spinner.svg';
+import { useAuth } from '../../hooks/useAuth';
 import useForm from '../../hooks/useForm';
 
 export default function LoginForm() {
-
-   const additionalData = {};
    const url = import.meta.env.VITE_API_URL;
-   const {successful, handleSubmit, message, submitting, errors, handleChange} = useForm(`${url}/login`, additionalData);
+   const {successful, handleSubmit, message, submitting, errors, handleChange, response} = useForm(`${url}/auth/login`, {});
 
+   const { login, user } = useAuth();
+   useEffect(() => {
+      if(successful){
+         const { user } = response;
+         if (user) {
+            login(user);
+         }
+      };
+   }, [successful]);
+      
+   
    return (
       <>
-         {successful ? <Navigate to='/store' /> : (<Form onSubmit={handleSubmit}>
+         {user?.token ? <Navigate to='/marchant' /> : (<Form onSubmit={handleSubmit}>
             <Row>
                <Col md='12'>
                   <Form.Group className="mb-3">
-                     <Form.Label>Email</Form.Label>
-                     <Form.Control type="email" className={errors && errors?.email ? 'is-invalid' : ''} name="email" placeholder="Enter your email" onChange={handleChange} />
+                     <Form.Label className='text-dark'>Email</Form.Label>
+                     <Form.Control size='lg' type="email" className={errors && errors?.email ? 'is-invalid' : ''} name="email" placeholder="Enter your email" onChange={handleChange} />
                      {errors && errors?.email ? (<small className='text-danger'>{errors.email}</small>) : ''}
                   </Form.Group>
                </Col>
                <Col md='12'>
                   <Form.Group className="mb-3">
-                     <Form.Label>Password</Form.Label>
-                     <Form.Control type="text" className={errors?.password && 'is-invalid'} name="password" placeholder="Enter your password" onChange={handleChange} />
+                     <Form.Label className='d-flex justify-content-between'>
+                        <div className='text-dark'>Password</div>
+                        <Link to='/login'>Forgot password?</Link>
+                     </Form.Label>
+                     <Form.Control size='lg' type="password" className={errors?.password && 'is-invalid'} name="password" placeholder="Enter your password" onChange={handleChange} />
                      {errors && errors?.password ? (<small className='text-danger'>{errors.password}</small>) : ''}
                   </Form.Group>
                </Col>

@@ -20,7 +20,8 @@ export default function useForm(endpointUrl: string, additionalData: object) {
    const [successful, setSuccessful] = useState(false);
    const [message, setMessage] = useState('');
 
-   const [response, setResponse] = useState({done: false});
+   const defaultResponse = {done: false, user: null};
+   const [response, setResponse] = useState(defaultResponse);
 
    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
@@ -40,7 +41,7 @@ export default function useForm(endpointUrl: string, additionalData: object) {
          setSuccessful(false);
          setMessage('');
          setErrors({});
-         setResponse({done: false});
+         setResponse(defaultResponse);
 
          if (additionalData) {
             Object.assign(form, additionalData);
@@ -63,12 +64,13 @@ export default function useForm(endpointUrl: string, additionalData: object) {
                setSuccessful(data['success']);
                setMessage(data['message']);
                if (data['response']) {
+                  console.log(data['response']);
                   setResponse(data['response']);
                }
             }
 
             setSubmitting(false);
-         }).catch(function (error) {
+         }).catch(function () {
             setSubmitting(false);
             setSuccessful(false);
             setMessage('Unknown server error. Please try again.');

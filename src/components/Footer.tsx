@@ -6,7 +6,7 @@ export default function Footer() {
    return (
       <section className='bg-dark'>
          <Container>
-            <div style={{ padding: '120px 0' }}>
+            <div style={{ padding: '80px 0 20px' }}>
                <Row>
                   <Col sm="12" md="5" className='mb-4'>
                      <div className='mb-4' style={{ width: '185px', height: 'auto' }}>

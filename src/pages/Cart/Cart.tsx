@@ -4,10 +4,12 @@ import paypal from '../../assets/paypal.png';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { RiEditCircleLine } from 'react-icons/ri';
 import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Cart() {
    return (
       <div>
+         <Navbar showCenterLinks={true} />
          <section style={{ padding: '120px 0 100px' }}>
             <Container>
                <h3 className='text-dark mb-4 w-100'>Shoping Cart</h3>
