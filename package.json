@@ -25,7 +25,8 @@
       "react-phone-number-input": "^3.2.19",
       "react-router-dom": "^6.8.0",
       "react-router-loading": "^1.0.0",
-      "react-simple-star-rating": "^5.1.7"
+      "react-simple-star-rating": "^5.1.7",
+      "webhook-deploy-for-node": "^1.0.0"
    },
    "devDependencies": {
       "@types/node": "^18.13.0",
