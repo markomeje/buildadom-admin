@@ -1,11 +1,11 @@
-name: CI
-​
 on:
   push:
-    branches: [ main ]
-    
+    branches:
+      - main
+name: 🚀 Deploy website on push to main branch
 jobs:
-  deploy:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: self-hosted
     
   strategy: 
@@ -16,7 +16,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}s
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         node-version: ${{ matrix.node-version }}
