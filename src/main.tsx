@@ -12,6 +12,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <React.StrictMode>
          <BrowserRouter>
             <App />
+            <ReactQueryDevtools initialIsOpen />
          </BrowserRouter>
       </React.StrictMode>
    </QueryClientProvider>

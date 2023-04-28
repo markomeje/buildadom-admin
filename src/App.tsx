@@ -1,21 +1,29 @@
 import { Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import GlobalLoader from './components/Loaders/GlobalLoader'
-import { routes } from './data/routes';
+import GlobalLoader from './components/Loaders/GlobalLoader';
 import { AuthProvider } from './contexts/AuthContext';
 import './App.scss';
 
+import { lazy } from 'react';
+import pMinDelay from 'p-min-delay';
+
+const Dashboard = lazy(() => pMinDelay(import('./pages/Dashboard/Dashboard'), 500));
+const Identifications = lazy(() => pMinDelay(import('./pages/Identifications/Identifications'), 500));
+const SingleIdentification = lazy(() => pMinDelay(import('./pages/Identifications/SingleIdentification'), 500));
+
+
 export default function App() {
-   return (
-      <AuthProvider>
-         <Suspense fallback={<GlobalLoader />}>
-            <Routes>
-               {routes.map((route, index) => {
-                  let Element: React.ReactNode | null = route.element;
-                  return (<Route path={route.path} element={Element} key={index} />)
-               })}
-            </Routes>
-         </Suspense>
-      </AuthProvider>
-   )
+  return (
+    <AuthProvider>
+      <Suspense fallback={<GlobalLoader />}>
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path="/identifications">
+            <Route index element={<Identifications />} />
+            <Route path="identification/:id" element={<SingleIdentification />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </AuthProvider>
+  )
 }

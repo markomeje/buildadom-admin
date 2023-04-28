@@ -11,14 +11,13 @@ const Verification = lazy(() => pMinDelay(import('../pages/Verification/Verifica
 const Login = lazy(() => pMinDelay(import('../pages/Login/Login'), 500));
 const Marchant = lazy(() => pMinDelay(import('../pages/Marchant/Marchant'), 500));
 const Reset = lazy(() => pMinDelay(import('../pages/Reset/Reset'), 500));
-
+const Dashboard = lazy(() => pMinDelay(import('../pages/Dashboard/Dashboard'), 500));
 
 
 export const routes = [
    {
-      element: <Home />,
+      element: <Dashboard />,
       path: '/',
-      requireAuth: false,
    },
    {
       element: <Marketplace />,
@@ -36,33 +35,20 @@ export const routes = [
       requireAuth: false,
    },
    {
-      element: <Signup />,
-      path: '/signup',
-      requireAuth: false,
-   },
-   {
       element: <Verification />,
       path: '/verification/:type',
       requireAuth: false,
    },
    {
-      element: <Reset />,
-      path: '/reset/:type',
-      requireAuth: false,
-   },
-   {
       element: <Cart />,
       path: '/cart',
-      requireAuth: false,
    },
    {
       element: <Login />,
       path: '/login',
-      requireAuth: false,
    },
    {
       element: <Marchant />,
       path: '/marchant',
-      requireAuth: false,
    },
 ];
