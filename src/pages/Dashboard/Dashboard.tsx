@@ -1,5 +1,4 @@
 import { Button, Col, Container, Row, Image, Card } from 'react-bootstrap'
-import Navbar from '../../components/Navbar/Navbar';
 import { BiStore } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { fetchAllIdentifications } from '../../helpers/api';
@@ -56,7 +55,6 @@ export default function Dashboard() {
 
   return (
     <div style={{ marginTop: '120px' }}>
-      <Navbar showCenterLinks={false} />
       <section className='w-100 pb-5 m-0'>
         <Container style={{ maxWidth: '960px' }}>
           <Row>

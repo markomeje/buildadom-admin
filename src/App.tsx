@@ -6,6 +6,7 @@ import './App.scss';
 
 import { lazy } from 'react';
 import pMinDelay from 'p-min-delay';
+import Navbar from './components/Navbar/Navbar';
 
 const Dashboard = lazy(() => pMinDelay(import('./pages/Dashboard/Dashboard'), 500));
 const Identifications = lazy(() => pMinDelay(import('./pages/Identifications/Identifications'), 500));
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <AuthProvider>
       <Suspense fallback={<GlobalLoader />}>
+        <Navbar showCenterLinks={false} />
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path="/identifications">

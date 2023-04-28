@@ -30,3 +30,14 @@ export const fetchSingleIdentification = (id: number) => {
 
   return empty(data) ? { isLoading: true, identification: null } : { isLoading: isLoading, identification: data?.identification };
 }
+
+export const VerifySingleIdentification = (id: number) => {
+  const { data, isLoading } = useQuery({
+    queryKey: ['identification'], 
+    queryFn: () => fetch(`${url}/admin/identifications/verify/${id}`, options).then(
+        (response) => response.json(),
+      ),
+  });
+
+  return empty(data) ? { isLoading: true, identification: null } : { isLoading: isLoading, identification: data?.identification };
+}
