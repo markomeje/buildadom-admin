@@ -4,7 +4,6 @@ import { Link, Navigate } from 'react-router-dom';
 import spinner from '../../assets/spinner.svg';
 import { useAuth } from '../../hooks/useAuth';
 import useForm from '../../hooks/useForm';
-import Process from '../../pages/Reset/Process';
 
 
 export default function LoginForm() {
@@ -54,7 +53,6 @@ export default function LoginForm() {
                </Button>
             </span>
          </Form>)}
-         <Process show={show} handleClose={handleClose} />
       </>
    )
 }
