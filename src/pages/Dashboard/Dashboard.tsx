@@ -25,7 +25,7 @@ export default function Dashboard() {
     {
       title: 'All Identifications',
       value: identifications?.total || 0,
-      iconColor: 'success',
+      iconColor: 'primary',
       link: 'identifications'
     },
     {
@@ -43,7 +43,7 @@ export default function Dashboard() {
     {
       title: 'Activity Logs',
       value: '7,804',
-      iconColor: 'primary',
+      iconColor: 'dark',
       link: 'activities'
     },
   ];
