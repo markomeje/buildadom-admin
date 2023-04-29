@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { empty } from "./functions";
 
-const url = import.meta.env.VITE_API_URL;
+const url = 'https://api.buildadom.net/api/v1';
 var options = {
   headers: {
     'Accept': 'application/json',

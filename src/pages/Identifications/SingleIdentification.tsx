@@ -23,7 +23,7 @@ export default function SingleIdentification() {
                     <div className='text-dark p-3 py-4 mb-4 border rounded'>
                       <span className='me-2'>Identification details by {identification?.type.toLowerCase() === 'business' ? identification?.fullname : identification?.user?.firstname+' '+identification?.user?.lastname || 'Nill'} ({ucfirst(identification?.type || '')})</span>
                     </div>
-                    <div style={{ height: '240px' }} className='w-100 mb-4 position-relative'>
+                    <div className='w-100 mb-4 position-relative'>
                       {empty(identification?.image?.url) ? (<Image src={holder} className='w-100 h-100 object-cover border' alt='Identity Document' />) : (<Link to={identification?.image?.url}>
                         <Image src={identification?.image?.url} className='w-100 h-100 object-cover border' alt='Identity Document' />
                       </Link>)}
