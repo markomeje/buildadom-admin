@@ -7,7 +7,7 @@ type Props = {
 
 export default function Container({ children }: Props) {
   return (
-    <BootstrapContainer style={{  maxWidth: '960px' }}>
+    <BootstrapContainer style={{  maxWidth: '1080px' }}>
       {children}
     </BootstrapContainer>
   )

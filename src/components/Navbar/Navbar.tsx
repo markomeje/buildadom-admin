@@ -1,4 +1,4 @@
-import { Button, Container, Image } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
 import { RxHamburgerMenu } from 'react-icons/rx';
@@ -9,6 +9,7 @@ import ProfileImage from '../../assets/profile.png';
 import { useAuth } from '../../hooks/useAuth';
 import Sidebar from '../../components/Sidebar';
 import { useState } from 'react';
+import Container from '../Container';
 
 type NavbarType = {
   showCenterLinks: boolean,
@@ -25,7 +26,7 @@ export default function Navbar({ showCenterLinks = true }: NavbarType) {
     <>
       <Sidebar showSidebar={show} handleClose={handleClose} />
       <div className='w-100 bg-white fixed-top border-bottom py-4'>
-          <Container style={{ maxWidth: '960px' }}>
+          <Container>
             <div className='d-flex justify-content-between align-items-center'>
                 <div className='d-flex align-items-center'>
                   <div className='mt-1 me-3 cursor-pointer' onClick={handleShow}>

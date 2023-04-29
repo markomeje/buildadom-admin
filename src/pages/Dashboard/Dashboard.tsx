@@ -1,7 +1,8 @@
-import { Button, Col, Container, Row, Image, Card } from 'react-bootstrap'
+import { Button, Col, Row, Image, Card } from 'react-bootstrap'
 import { BiStore } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { fetchAllIdentifications } from '../../helpers/api';
+import Container from '../../components/Container';
 
 
 
@@ -17,7 +18,7 @@ export default function Dashboard() {
     },
     {
       title: 'Total Marchants',
-      value: 'NGN23,000',
+      value: '23,400',
       iconColor: 'secondary',
       link: 'indentifications'
     },
@@ -29,14 +30,8 @@ export default function Dashboard() {
     },
     {
       title: 'All Orders',
-      value: 'NGN23,000',
+      value: '6,450',
       iconColor: 'warning',
-      link: 'indentifications'
-    },
-    {
-      title: 'Total Payments',
-      value: 'NGN23,000',
-      iconColor: 'dark',
       link: 'indentifications'
     },
     {
@@ -56,7 +51,7 @@ export default function Dashboard() {
   return (
     <div style={{ marginTop: '120px' }}>
       <section className='w-100 pb-5 m-0'>
-        <Container style={{ maxWidth: '960px' }}>
+        <Container>
           <Row>
             {data && data.map((info, index) => {
               return (<Col sm='12' md='3' lg='4' className='mb-4' key={index}>
@@ -73,6 +68,14 @@ export default function Dashboard() {
                 </div>
               </Col>)
             })}
+          </Row>
+          <Row>
+            <Col>
+              <Card>
+                <Card.Header className='bg-light py-4'>Total Payments NGN56,400</Card.Header>
+                <Card.Body></Card.Body>
+              </Card>
+            </Col>
           </Row>
         </Container>
       </section>
