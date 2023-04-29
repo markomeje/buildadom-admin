@@ -3,6 +3,7 @@ import { BiStore } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { fetchAllIdentifications } from '../../helpers/api';
 import Container from '../../components/Container';
+import chart from '../../assets/chart.png';
 
 
 
@@ -14,13 +15,13 @@ export default function Dashboard() {
       title: 'All Customers',
       value: '3,545',
       iconColor: 'success',
-      link: 'indentifications'
+      link: 'customers'
     },
     {
       title: 'Total Marchants',
       value: '23,400',
       iconColor: 'secondary',
-      link: 'indentifications'
+      link: 'marchants'
     },
     {
       title: 'All Identifications',
@@ -32,13 +33,13 @@ export default function Dashboard() {
       title: 'All Orders',
       value: '6,450',
       iconColor: 'warning',
-      link: 'indentifications'
+      link: 'orders'
     },
     {
       title: 'All Products',
       value: '56,034',
       iconColor: 'danger',
-      link: 'indentifications'
+      link: 'products'
     },
     {
       title: 'Activity Logs',
@@ -73,7 +74,11 @@ export default function Dashboard() {
             <Col>
               <Card>
                 <Card.Header className='bg-light py-4'>Total Payments NGN56,400</Card.Header>
-                <Card.Body></Card.Body>
+                <Card.Body>
+                  <div className='w-100'>
+                    <Image src={chart} className='img-fluid' />
+                  </div>
+                </Card.Body>
               </Card>
             </Col>
           </Row>
