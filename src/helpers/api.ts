@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { empty } from "./functions";
 
-const url = 'https://api.buildadom.net/api/v1';
+export const url = import.meta.env.VITE_API_URL || 'https://api.buildadom.net/api/v1';
 var options = {
   headers: {
     'Accept': 'application/json',
@@ -11,7 +11,7 @@ var options = {
 
 export const fetchAllIdentifications = () => {
   const { data, isLoading } = useQuery({
-    queryKey: ['identifications'], 
+    queryKey: ['all-identifications'], 
     queryFn: () => fetch(`${url}/admin/identifications?limit=40`, options).then(
         (response) => response.json(),
       ),
@@ -22,7 +22,7 @@ export const fetchAllIdentifications = () => {
 
 export const fetchSingleIdentification = (id: number) => {
   const { data, isLoading } = useQuery({
-    queryKey: ['identification'], 
+    queryKey: ['single-identification'], 
     queryFn: () => fetch(`${url}/admin/identifications/identification/${id}`, options).then(
         (response) => response.json(),
       ),
@@ -33,7 +33,7 @@ export const fetchSingleIdentification = (id: number) => {
 
 export const VerifySingleIdentification = (id: number) => {
   const { data, isLoading } = useQuery({
-    queryKey: ['identification'], 
+    queryKey: ['verify-identification'], 
     queryFn: () => fetch(`${url}/admin/identifications/verify/${id}`, options).then(
         (response) => response.json(),
       ),
