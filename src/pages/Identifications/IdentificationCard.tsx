@@ -25,7 +25,7 @@ export default function IdentificationCard({ image, id_type, fullname, verified,
         <Link to={`/identifications/identification/${id}`} className='text-decoration-none'>
           <div className='position-absolute d-flex align-items-center' style={{ top: '20px', left: '20px', fontSize: '10px' }}>
             <div className='me-2'>
-              <small className='rounded-pill bg-dark w-100 px-3 py-1 text-white'>
+              <small className='rounded-pill bg-main w-100 px-3 py-1 text-white'>
                 {ucfirst(type)}
               </small>
             </div>
