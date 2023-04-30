@@ -51,7 +51,7 @@ export default function SingleIdentification() {
             {isLoading ? <Placeholder className="w-100" animation="glow" /> : (<div>
               {identification && <div>
                 <div className='text-dark p-3 py-4 mb-4 border rounded'>
-                  <span className='me-2'>Identification details by {identification?.type.toLowerCase() === 'business' ? identification?.fullname : identification?.user?.firstname+' '+identification?.user?.lastname || 'Nill'} ({ucfirst(identification?.type || '')})</span>
+                  <span className='me-2'>Identification details by {(identification?.user?.firstname) + ' ' + (identification?.user?.lastname)} ({ucfirst(identification?.type || '')})</span>
                 </div>
                 <div className='mb-4'>
                   {message && (<div className={`bg-${successful ? 'success' : 'danger'} p-3 text-white`}>{message}</div>)}
