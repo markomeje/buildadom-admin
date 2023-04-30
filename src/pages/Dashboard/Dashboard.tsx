@@ -8,9 +8,9 @@ import chart from '../../assets/chart.png';
 
 
 export default function Dashboard() {
-  const { identifications } = fetchAllIdentifications();
+  const { data } = fetchAllIdentifications();
 
-  const data = [
+  const panels = [
     {
       title: 'All Customers',
       value: '3,545',
@@ -25,7 +25,7 @@ export default function Dashboard() {
     },
     {
       title: 'All Identifications',
-      value: identifications?.total || 0,
+      value: data?.identifications?.total || 0,
       iconColor: 'primary',
       link: 'identifications'
     },
@@ -54,7 +54,7 @@ export default function Dashboard() {
       <section className='w-100 pb-5 m-0'>
         <Container>
           <Row>
-            {data && data.map((info, index) => {
+            {panels && panels.map((info, index) => {
               return (<Col sm='12' md='3' lg='4' className='mb-4' key={index}>
                 <div className='d-flex align-items-center bg-light p-4 rounded'>
                   <div className={`bg-${info.iconColor} rounded me-3 text-center text-white`} style={{ width: '50px', height: '50px', lineHeight: '47px' }}>

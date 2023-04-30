@@ -10,14 +10,12 @@ var options = {
 };
 
 export const fetchAllIdentifications = () => {
-  const { data, isLoading } = useQuery({
+  return useQuery({
     queryKey: ['all-identifications'], 
     queryFn: () => fetch(`${url}/admin/identifications?limit=40`, options).then(
         (response) => response.json(),
       ),
   });
-
-  return empty(data) ? { isLoading: true, identifications: null } : { isLoading: isLoading, identifications: data?.identifications };
 }
 
 export const fetchSingleIdentification = (id: number) => {
