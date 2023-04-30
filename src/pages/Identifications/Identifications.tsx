@@ -15,7 +15,7 @@ export default function Identifications() {
         {isLoading ? (<Placeholder className="w-100" as="p" animation="glow">
           <Placeholder xs={12} />
         </Placeholder>) : <div>
-          {isError ? <Alert variant="danger">An error occurred. Failed to fetch</Alert>
+          {isError ? <Alert variant="danger">An error occurred. Failed to fetch data.</Alert>
           : (<div className=''>
               <Alert className='bg-transparent border text-dark mb-4'>{identifications?.total || 0} Marchant ID Verifications</Alert>
               <Table striped bordered hover size="sm">
