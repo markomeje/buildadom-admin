@@ -44,7 +44,7 @@ export default function SingleIdentification() {
   }
 
   return (
-    <div style={{  marginTop: '110px' }}>
+    <div className='pb-5' style={{  marginTop: '110px' }}>
       <Container>
         <Row>
           <Col sm='12' md='7' lg='8'>
@@ -57,9 +57,9 @@ export default function SingleIdentification() {
                   {message && (<div className={`bg-${successful ? 'success' : 'danger'} p-3 text-white`}>{message}</div>)}
                 </div>
                 <div className='w-100 mb-4 position-relative'>
-                  {empty(identification?.image?.url) ? (<Image src={holder} className='w-100 h-100 object-cover border' alt='Identity Document' />) : (<Link to={identification?.image?.url}>
+                  {identification?.image?.url ? (<Link to={identification?.image?.url}>
                     <Image src={identification?.image?.url} className='w-100 h-100 object-cover border' alt='Identity Document' />
-                  </Link>)}
+                  </Link>) : (<Image src={holder} className='w-100 h-100 object-cover border' alt='Identity Document' />)}
                   <div className='position-absolute text-center' style={{ top: '24px', left: '24px', width: '150px' }}>
                     {identification?.verified || successful ? <div className='bg-success text-white rounded-pill px-4 py-1 w-100'>Verified</div> : <div className='bg-main text-white rounded-pill px-4 py-1 cursor-pointer border-0 w-100' data-bs-offset="10,20" onClick={() => handleVerification()} style={{ opacity: isVerfying ? '0.4' : '1' }}>{isVerfying ? 'Verifying . . .' : 'Verify?'}</div>}
                   </div>
