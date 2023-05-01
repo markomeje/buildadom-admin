@@ -14,7 +14,7 @@ export default function SingleIdentification() {
   
   const { id } = useParams();
   const { identification, isLoading } = fetchSingleIdentification(Number(id));
-  // console.log(identification);
+  console.log(identification);
 
   const handleVerification = () => {
     setIsVerifying(true);
