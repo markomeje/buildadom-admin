@@ -50,7 +50,7 @@ export default function SingleIdentification() {
             {isLoading ? <Placeholder className="w-100" animation="glow" /> : (<div>
               {identification && <div>
                 <div className='text-dark p-3 py-4 mb-4 border rounded'>
-                  <span className='me-2'>Identification details by {(identification?.user?.firstname) + ' ' + (identification?.user?.lastname)} ({ucfirst(identification?.type || '')})</span>
+                  <span className='me-2'>Identification details by {(identification?.type?.toLowerCase || '') === 'business' ? identification.fullname : (identification?.user?.firstname) + ' ' + (identification?.user?.lastname)} ({ucfirst(identification?.type || '')})</span>
                 </div>
                 {message && (<Alert className='mb-4' variant={`${successful ? 'success' : 'danger'}`}>{message}</Alert>)}
                 {empty(identification?.image?.url) ? <Alert variant="danger" className='mb-4'>No document ID uploaded yet.</Alert> : <div className='w-100 mb-4 position-relative'>
@@ -93,7 +93,7 @@ export default function SingleIdentification() {
                   <Col sm='12' className='mb-3'>
                     <div className='mb-1 text-muted'>Address</div>
                     <div className='w-100 px-3 py-2 border rounded'>
-                      <small className='text-dark'>{identification?.address || identification?.user?.address} ({identification?.state})</small>
+                      <small className='text-dark'>{identification?.address || identification?.user?.address} {identification?.state ? '('+identification?.state+')' : ''}</small>
                     </div>
                   </Col>
                   <Col sm='12' md='6' lg='6' className='mb-3'>
