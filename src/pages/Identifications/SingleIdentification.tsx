@@ -14,6 +14,7 @@ export default function SingleIdentification() {
   
   const { id } = useParams();
   const { identification, isLoading } = fetchSingleIdentification(Number(id));
+  console.log(identification);
 
   const handleVerification = () => {
     setIsVerifying(true);
@@ -50,7 +51,10 @@ export default function SingleIdentification() {
             {isLoading ? <Placeholder className="w-100" animation="glow" /> : (<div>
               {identification && <div>
                 <div className='text-dark p-3 py-4 mb-4 border rounded'>
-                  <span className='me-2'>Identification details by {(identification?.type?.toLowerCase || '') === 'business' ? identification.fullname : (identification?.user?.firstname) + ' ' + (identification?.user?.lastname)} ({ucfirst(identification?.type || '')})</span>
+                  <div className='me-2'>Identification details by {(identification?.type?.toLowerCase || '') === 'business' ? identification.fullname : (identification?.user.type.toLowerCase === 'individual' ? ((identification?.user?.firstname) + ' ' + (identification?.user?.lastname)) : identification?.user?.business_name)}
+                  
+                  <span className='font-weight-light'>({ucfirst(identification?.type || '')})</span>
+                  </div>
                 </div>
                 {message && (<Alert className='mb-4' variant={`${successful ? 'success' : 'danger'}`}>{message}</Alert>)}
                 {empty(identification?.image?.url) ? <Alert variant="danger" className='mb-4'>No document ID uploaded yet.</Alert> : <div className='w-100 mb-4 position-relative'>
