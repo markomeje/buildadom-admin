@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import Container from '../../components/Container';
-import { Col, Placeholder, Row, Image, Button, Dropdown } from 'react-bootstrap';
+import { Col, Placeholder, Row, Image, Button, Dropdown, Alert } from 'react-bootstrap';
 import { fetchSingleIdentification, url } from '../../helpers/api';
 import holder from '../../assets/holder.jpg';
 import { empty, format, ucfirst, ucwords } from '../../helpers/functions';
@@ -14,7 +14,6 @@ export default function SingleIdentification() {
   
   const { id } = useParams();
   const { identification, isLoading } = fetchSingleIdentification(Number(id));
-  console.log(identification);
 
   const handleVerification = () => {
     setIsVerifying(true);
@@ -53,17 +52,15 @@ export default function SingleIdentification() {
                 <div className='text-dark p-3 py-4 mb-4 border rounded'>
                   <span className='me-2'>Identification details by {(identification?.user?.firstname) + ' ' + (identification?.user?.lastname)} ({ucfirst(identification?.type || '')})</span>
                 </div>
-                <div className='mb-4'>
-                  {message && (<div className={`bg-${successful ? 'success' : 'danger'} p-3 text-white`}>{message}</div>)}
-                </div>
-                <div className='w-100 mb-4 position-relative'>
-                  {identification?.image?.url ? (<Link to={identification?.image?.url}>
+                {message && (<Alert className='mb-4' variant={`${successful ? 'success' : 'danger'}`}>{message}</Alert>)}
+                {empty(identification?.image?.url) ? <Alert variant="danger" className='mb-4'>No document ID uploaded yet.</Alert> : <div className='w-100 mb-4 position-relative'>
+                  <Link to={identification?.image?.url}>
                     <Image src={identification?.image?.url} className='w-100 h-100 object-cover border' alt='Identity Document' />
-                  </Link>) : (<Image src={holder} className='w-100 h-100 object-cover border' alt='Identity Document' />)}
+                  </Link>
                   <div className='position-absolute text-center' style={{ top: '24px', left: '24px', width: '150px' }}>
-                    {identification?.verified || successful ? <div className='bg-success text-white rounded-pill px-4 py-1 w-100'>Verified</div> : <div className='bg-main text-white rounded-pill px-4 py-1 cursor-pointer border-0 w-100' data-bs-offset="10,20" onClick={() => handleVerification()} style={{ opacity: isVerfying ? '0.4' : '1' }}>{isVerfying ? 'Verifying . . .' : 'Verify?'}</div>}
+                    {identification?.verified || successful ? <div className='bg-success text-white rounded-pill px-4 py-1 w-100'>Verified</div> : <div className='bg-main text-white rounded-pill px-4 py-1 cursor-pointer border-0 w-100' data-bs-offset="10,20" onClick={() => handleVerification()} style={{ opacity: isVerfying ? '0.3' : '1' }}>{isVerfying ? 'Verifying . . .' : 'Verify ID'}</div>}
                   </div>
-                </div>
+                </div>}
                 <Row>
                   <Col sm='12' md='6' lg='6' className='mb-3'>
                     <div className='mb-1 text-muted'>ID Type</div>
