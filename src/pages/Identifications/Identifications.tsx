@@ -31,10 +31,10 @@ export default function Identifications() {
                 </tr>
               </thead>
               <tbody>
-                {identifications?.data && identifications.data.map(({ id, image, id_type, fullname, verified, id_number, type, created_at, user }: any, index: any) => {
+                {identifications?.data && identifications.data.map(({ id, id_type, fullname, verified, id_number, type, user, }: any, index: any) => {
                   return (<tr key={id}>
                     <td>{index + 1}</td>
-                    <td>{(user?.firstname || '') + ' ' + (user?.lastname || '')}</td>
+                    <td>{type.toLowerCase() === 'business' ? ucwords(fullname || type) : ((user?.firstname || '') + ' ' + (user?.lastname || ''))}</td>
                     <td>{ucwords(id_type || '')}</td>
                     <td>{id_number}</td>
                     <td>{ucfirst(type || '')}</td>
